@@ -24,10 +24,10 @@ if has("unix")
     let s:uname = system("uname -s")
 endif
 
-if s:uname == "Darwin"
+if s:uname == "Darwin\n"
     set backspace=indent,eol,start
     set clipboard=unnamed
-elseif s:uname == "Linux"
+elseif s:uname == "Linux\n"
     set clipboard=unnamedplus
 endif
 
