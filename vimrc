@@ -76,8 +76,6 @@ endfunction
 autocmd CursorHold * silent call CocActionAsync('highlight')
 autocmd CursorHoldI * silent call CocActionAsync('showSignatureHelp')
 
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-
 set tagfunc=CocTagFunc
 
 " vista.vim
