@@ -9,7 +9,7 @@ case $(uname -s) in
         curl -fLo ~/.vim/coc-settings.json \
             https://raw.githubusercontent.com/textkiller/vim_config/master/macos/coc-settings.json
         ;;
-    LInux*)
+    Linux*)
         curl -fLo ~/.vim/coc-settings.json \
             https://raw.githubusercontent.com/textkiller/vim_config/master/linux/coc-settings.json
         ;;
