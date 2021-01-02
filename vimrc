@@ -1,8 +1,10 @@
 call plug#begin('$HOME/.vim/plugged')
 
+Plug 'ryanoasis/vim-devicons'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-airline/vim-airline'
 Plug 'tomasiser/vim-code-dark'
+Plug 'liuchengxu/vista.vim'
 
 call plug#end()
 
@@ -20,6 +22,7 @@ set updatetime=300
 
 colorscheme codedark
 
+let s:uname = "unknown"
 if has("unix")
     let s:uname = system("uname -s")
 endif
@@ -32,6 +35,16 @@ elseif s:uname == "Linux\n"
 endif
 
 " coc.nvim configurations
+set hidden
+
+set shortmess+=c
+
+if has("patch-8.1.1564")
+    set signcolumn=number
+else
+    set signcolumn=yes
+endif
+
 inoremap <silent><expr> <TAB>
     \ pumvisible() ? "\<C-n>" :
     \ <SID>check_back_space() ? "\<TAB>" :
@@ -48,13 +61,7 @@ inoremap <silent><expr> <c-@> coc#refresh()
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
                             \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-refernces)
+nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
     if (index(['vim', 'help'], &filetype) >= 0)
@@ -70,6 +77,11 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 autocmd CursorHoldI * silent call CocActionAsync('showSignatureHelp')
 
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+set tagfunc=CocTagFunc
+
+" vista.vim
+let g:vista_default_executive = 'coc'
 
 " vim-airline
 let g:airline_theme = 'codedark'
