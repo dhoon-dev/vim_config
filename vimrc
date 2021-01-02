@@ -75,7 +75,15 @@ function! s:show_documentation()
 endfunction
 
 autocmd CursorHold * silent call CocActionAsync('highlight')
-autocmd CursorHoldI * silent call CocActionAsync('showSignatureHelp')
+augroup mygroup
+    autocmd!
+    " Setup formatexpr specified filetype(s).
+    autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+    " Update signature help on jump placeholder.
+    autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+nmap <leader>rn <Plug>(coc-rename)
 
 set tagfunc=CocTagFunc
 

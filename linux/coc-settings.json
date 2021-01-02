@@ -1,5 +1,5 @@
 {
-    "coc.preferences.currentFunctionSymbolAutoUpdate": true,
+    "coc.preferences.formatOnType": true,
     "languageserver": {
         "ccls": {
             "command": "ccls",
