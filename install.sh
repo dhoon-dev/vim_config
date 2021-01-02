@@ -6,6 +6,8 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 
 case $(uname -s) in
     Darwin*)
+        brew tap dhoon-dev/coldbrew
+        brew install node dhoon-dev/coldbrew/ccls
         curl -fLo ~/.vim/coc-settings.json \
             https://raw.githubusercontent.com/textkiller/vim_config/master/macos/coc-settings.json
         ;;
