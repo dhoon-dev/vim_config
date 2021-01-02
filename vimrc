@@ -36,6 +36,14 @@ elseif s:uname == "Linux\n"
 endif
 
 " coc.nvim configurations
+let g:coc_global_extensions = [
+    \'coc-pairs',
+    \'coc-lists',
+    \'coc-highlight',
+    \'coc-pyright',
+    \'coc-json'
+    \]
+
 set hidden
 
 set shortmess+=c
@@ -54,7 +62,7 @@ inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
     let col = col('.') - 1
-    return !col || getline('.')[col - 1] = ~# '\s'
+    return !col || getline('.')[col - 1] =~# '\s'
 endfunction
 
 inoremap <silent><expr> <c-@> coc#refresh()
