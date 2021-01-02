@@ -5,6 +5,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-airline/vim-airline'
 Plug 'tomasiser/vim-code-dark'
 Plug 'liuchengxu/vista.vim'
+Plug 'jackguo380/vim-lsp-cxx-highlight'
 
 call plug#end()
 
@@ -83,5 +84,8 @@ let g:vista_default_executive = 'coc'
 
 " vim-airline
 let g:airline_theme = 'codedark'
+
+"vim-lsp-cxx-highlight
+let g:lsp_cxx_hl_use_text_props = 1
 
 filetype plugin indent on
