@@ -37,6 +37,7 @@ endif
 
 " coc.nvim configurations
 let g:coc_global_extensions = [
+    \'coc-clangd',
     \'coc-pairs',
     \'coc-lists',
     \'coc-highlight',
@@ -54,16 +55,17 @@ else
     set signcolumn=yes
 endif
 
-inoremap <silent><expr> <TAB>
-    \ pumvisible() ? "\<C-n>" :
-    \ <SID>check_back_space() ? "\<TAB>" :
-    \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
 function! s:check_back_space() abort
     let col = col('.') - 1
-    return !col || getline('.')[col - 1] =~# '\s'
+    return !col || getline('.')[col - 1] =~ '\s'
 endfunction
+
+inoremap <silent><expr> <Tab>
+    \ pumvisible() ? "\<C-n>" :
+    \ <SID>check_back_space() ? "\<Tab>" :
+    \ coc#refresh()
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 inoremap <silent><expr> <c-@> coc#refresh()
 
